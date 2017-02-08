@@ -15,13 +15,18 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
-  if a == b && a == c
-    :equilateral
-  elsif a == b || a == c || b == c
-    :isosceles
-  else
-    :scalene
-  end
+  x,y,z = [a,b,c].sort
+  raise TriangleError if x <= 0
+  raise TriangleError if x + y <= z
+
+    if a == b && a == c
+      :equilateral
+    elsif a == b || a == c || b == c
+      :isosceles
+    else
+      :scalene
+    end
+    
 end
 
 # Error class used in part 2.  No need to change this code.
