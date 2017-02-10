@@ -29,8 +29,30 @@ require File.expand_path(File.dirname(__FILE__) + '/neo')
 #
 # Your goal is to write the score method.
 
+
 def score(dice)
   # You need to write this method
+  sum = 0
+  sorted_dice = dice.sort
+  while sorted_dice.length > 0
+    shifted = sorted_dice.shift  #First element of array extracted
+    if sorted_dice.length >= 2 && shifted == sorted_dice[0] && shifted == sorted_dice[1]
+      if shifted == 1
+        sum += 1000
+      else
+        sum += shifted * 100
+      end
+      sorted_dice.shift(2)
+    else
+      if shifted == 1
+        sum += 100
+      end
+      if shifted == 5
+        sum += 50
+      end
+    end
+  end
+  return sum
 end
 
 class AboutScoringProject < Neo::Koan
